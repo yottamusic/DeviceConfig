@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'yotta';
+  src:  url('fonts/yotta.eot?lyilzg');
+  src:  url('fonts/yotta.eot?lyilzg#iefix') format('embedded-opentype'),
+    url('fonts/yotta.ttf?lyilzg') format('truetype'),
+    url('fonts/yotta.woff?lyilzg') format('woff'),
+    url('fonts/yotta.svg?lyilzg#yotta') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ico {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'yotta' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-auto-detect:before {
+  content: "\e904";
+}
+.ico-wifi-hotspot:before {
+  content: "\e902";
+}
+.ico-wifi:before {
+  content: "\e903";
+}
+.ico-close:before {
+  content: "\e901";
+}
+.ico-drawer:before {
+  content: "\e900";
+}
