@@ -3,7 +3,7 @@
 cnt=`ps -aux | grep hostapd | wc -l`
 
 if [ $cnt -gt 1 ]; then
-  echo AP
+  printf '{"todo": "Check WiFi Mode","result": "success","message": "AP"}\n'
 else
-  echo STA
+  printf '{"todo": "Check WiFi Mode","result": "success","message": "STA"}\n'
 fi
