@@ -39,7 +39,7 @@ func GetSpeakersList() (string, error) {
 		log.Printf("No Wireless Speakers Found!")
 	} else {
 		// If Speaker Count Not Zero, Get the list
-		command := exec.Command("/bin/bash", "Check_Availible_Speakers.sh", "-l")
+		command := exec.Command("/bin/bash", "Check_Availible_Speakers.sh")
 		command.Dir = "/root/"
 		commandOutput, err := command.CombinedOutput()
 		if err != nil {

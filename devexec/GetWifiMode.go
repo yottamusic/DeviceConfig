@@ -17,7 +17,7 @@ type BashResponseWifiMode struct {
 // GetWifiMode Get Wifi Mode by Running a Script from Bash
 func GetWifiMode() (string, error) {
 
-	command := exec.Command("/bin/bash", "Check_Wifi_Mode.sh", "-l")
+	command := exec.Command("/bin/bash", "Check_Wifi_Mode.sh")
 	command.Dir = "/root/"
 	commandOutput, err := command.CombinedOutput()
 	if err != nil {
