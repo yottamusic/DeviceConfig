@@ -34,9 +34,10 @@ func GetSpeakersList() (string, error) {
 	if bashResponseSpeakerCount.Result != "success" {
 		return bashResponseSpeakerCount.Result, nil
 	}
-	speakersList := string(commandOutput[:])
+	speakersList := ""
 	if bashResponseSpeakerCount.Message == "0" {
 		log.Printf("No Wireless Speakers Found!")
+		speakersList = string(commandOutput[:])
 	} else {
 		// If Speaker Count Not Zero, Get the list
 		command := exec.Command("/bin/bash", "Check_Availible_Speakers.sh", "-l")
