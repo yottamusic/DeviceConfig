@@ -21,7 +21,7 @@ fi
 #   5: off
 # bit 7 will be polarity control
 
-/root/i2crw0 w 33 $1 0x20 $3
+/root/i2crw0 w 33 $1 0x20 1
 
 
 
