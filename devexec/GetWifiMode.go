@@ -24,7 +24,6 @@ func GetWifiMode() (string, error) {
 		fmt.Printf("%s", err)
 		return "", err
 	}
-	//output := string(commandOutput[:])
 	log.Println(string(commandOutput[:]))
 	var bashResponseWifiMode BashResponseWifiMode
 	err = json.Unmarshal(commandOutput, &bashResponseWifiMode)
@@ -35,5 +34,5 @@ func GetWifiMode() (string, error) {
 	if bashResponseWifiMode.Result != "success" {
 		return bashResponseWifiMode.Result, nil
 	}
-	return bashResponseWifiMode.Message, nil
+	return string(commandOutput[:]), nil
 }
