@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $# != 3 ]; then
+if [ $# != 2 ]; then
   exit 0
 fi
 
@@ -21,8 +21,7 @@ fi
 #   5: off
 # bit 7 will be polarity control
 
-if [ $2 -le 3 -a $2 -ge 1 ]; then
-  /root/i2crw0 w 33 $1 $2 $3
-fi
+/root/i2crw0 w 33 $1 0x20 $3
+
 
 
