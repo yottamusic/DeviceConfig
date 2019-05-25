@@ -9,10 +9,10 @@ if [ "$1" = "-c" ]; then
 fi
 
 if [ "$1" = "-l" ]; then
-  printf '{"todo": "Check speaker list","result": "success","message": {'
+  printf '{"todo": "Check speaker list","result": "success","message": "{'
   iw wlan0 scan | grep SSID | grep $SpkName | awk '{printf "\""$2"\" "}'
   #iw wlan0 scan | grep SSID | awk '{printf "\""$2"\" "}'
-  printf '}}\n'
+  printf '}""}\n'
   exit 0
 fi
 

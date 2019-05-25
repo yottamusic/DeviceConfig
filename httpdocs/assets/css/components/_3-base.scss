@@ -1,0 +1,55 @@
+body, html {
+  height: 100%;
+  background-color: #f7f7f7;
+  color: #555;
+
+  font-family: 'Montserrat', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, h4, h5, h6,  p, a{
+  margin: 0;
+  line-height: 150%;
+}
+
+.body-base{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  >.app-navigation{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #2d3738;
+    z-index: 99;
+    transform: translateX(-100%);
+    transition: transform 0.3s 0.3s ease-in;
+  }
+
+  >.app-navigation.open{
+    transform: translateX(0);
+    transition: transform 0.3s ease-out;
+  }
+
+  >div{
+    position: relative;
+    height: auto;
+    overflow: auto;
+  }
+}
+
+.body-main{
+  padding: 100px 0 50px;
+}
+
+
+.no-overflow{
+  overflow: hidden;
+}
