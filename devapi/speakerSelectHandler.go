@@ -8,8 +8,8 @@ import (
 	"github.com/yottamusic/DeviceConfig/devexec"
 )
 
-// SpeakerListHandler Handler for Getting the Speakers List
-func SpeakerListHandler(w http.ResponseWriter, r *http.Request) {
+// SpeakerSelectHandler Handler for Selecting the Speaker
+func SpeakerSelectHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		http.Error(w, "Expected a GET Request:", http.StatusBadRequest)
 		log.Printf("Expected a GET Request")
@@ -21,7 +21,7 @@ func SpeakerListHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("{" + " \"result\": \"error\", \"message\": \"Cannot Execute on a Windows Machine\" " + "}"))
 	} else {
 		//
-		execOutput, err := devexec.GetSpeakersList()
+		execOutput, err := devexec.SelectSpeaker()
 		if err != nil {
 			// Got Failure in Executing Command
 			log.Printf("Got Failure in Executing Command: %v", err)
@@ -29,8 +29,8 @@ func SpeakerListHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		} else if execOutput == "failure" {
 			// Got Failure in Executing Command
-			log.Printf("Failed to Get Speakers List!")
-			http.Error(w, "Failed to Get Speakers List!", http.StatusBadRequest) //HTTP 400
+			log.Printf("Failed to Select Speaker!")
+			http.Error(w, "Failed to Select Speaker!", http.StatusBadRequest) //HTTP 400
 			return
 		}
 
