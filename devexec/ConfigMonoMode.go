@@ -6,10 +6,10 @@ import (
 	"os/exec"
 )
 
-// ConfigSpeakers Config Speakers in Mono/Stereo Mode
-func ConfigSpeakers() (string, error) {
+// ConfigMonoMode Config Speakers in Mono Mode
+func ConfigMonoMode(speakerID string, mode string) (string, error) {
 
-	command := exec.Command("/bin/bash", "Set_Speaker.sh")
+	command := exec.Command("/bin/bash", "Set_Speaker.sh", speakerID, mode)
 	command.Dir = "/root/"
 	commandOutput, err := command.CombinedOutput()
 	if err != nil {
@@ -18,5 +18,5 @@ func ConfigSpeakers() (string, error) {
 	}
 	speakerOutput := string(commandOutput[:])
 	log.Println(speakerOutput)
-	return speakerOutput, nil
+	return "{\"result\" : \"Success\"}", nil
 }

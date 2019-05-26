@@ -40,7 +40,7 @@ func setupRoutes() {
 	fileServer := http.FileServer(http.Dir(*directory))
 	http.Handle("/", fileServer)
 
-	log.Printf("Serving %s on HTTP port: %s\n", *directory, *port)
+	log.Printf("Serving APIs and %s on HTTP port: %s\n", *directory, *port)
 	err := http.ListenAndServe(":"+*port, nil)
 	if err != nil {
 		panic(err)
