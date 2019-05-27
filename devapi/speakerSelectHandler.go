@@ -19,9 +19,9 @@ type Speaker struct {
 
 // SpeakerSelectHandler Handler for Selecting the Speaker
 func SpeakerSelectHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, "Expected a GET Request:", http.StatusBadRequest)
-		log.Printf("Expected a GET Request")
+	if r.Method != http.MethodPost {
+		http.Error(w, "Expected a POST Request:", http.StatusBadRequest)
+		log.Printf("Expected a POST Request")
 		return
 	}
 	jsonMsg, err := ioutil.ReadAll(r.Body)
