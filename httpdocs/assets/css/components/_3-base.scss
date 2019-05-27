@@ -12,6 +12,14 @@ h1, h2, h3, h4, h5, h6,  p, a{
   line-height: 150%;
 }
 
+b{
+  font-weight: 500;
+}
+
+strong{
+  font-weight: 700;
+}
+
 .body-base{
   position: fixed;
   top: 0;
@@ -19,9 +27,8 @@ h1, h2, h3, h4, h5, h6,  p, a{
   display: block;
   width: 100%;
   height: 100%;
-  overflow: auto;
 
-  >.app-navigation{
+  .app-navigation{
     position: fixed;
     width: 100%;
     height: 100%;
@@ -33,23 +40,50 @@ h1, h2, h3, h4, h5, h6,  p, a{
     transition: transform 0.3s 0.3s ease-in;
   }
 
-  >.app-navigation.open{
+  .app-navigation.open{
     transform: translateX(0);
     transition: transform 0.3s ease-out;
   }
 
-  >div{
+  .app-container{
     position: relative;
-    height: auto;
-    overflow: auto;
+    height: 100%;
+
+    .body-main{
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+
+      >table{
+        width: 100%;
+        min-height: 100%;
+        height: auto;
+        overflow: auto;
+
+        .content{
+          padding: 100px 0;
+        }
+      }
+    }
   }
 }
 
-.body-main{
-  padding: 100px 0 50px;
-}
+
 
 
 .no-overflow{
   overflow: hidden;
+}
+
+.wait{
+  transition: opacity .2s;
+}
+
+.no-display{
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.success{
+  color: #8CC63F;
 }

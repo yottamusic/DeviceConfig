@@ -97,24 +97,28 @@
 
         <!-- Body Main -->
         <div class="body-main">
-          <div class="content">
-
-            <div class="round-cta" data-href="access-mode">
-              <div>
-                <span class="ico ico-wifi"></span>
-              </div>
-              <p>Yotta Wifi<br>(access mode)</p>
+        <table cellspacing="0" cellpadding="0">
+        <tr><td class="content">
+      
+          <div class="round-cta ap-mode-block mb-3" data-href="access-mode">
+            <div>
+              <span class="ico ico-wifi-hotspot"></span>
             </div>
-
-            <div class="round-cta">
-              <div>
-                <span class="ico ico-wifi-hotspot"></span>
-              </div>
-              <p>Your Wifi<br>(client mode)</p>
-            </div>
-
+            <p class="ap-mode" style="display: none;"><b>Yotta Wifi</b><br>(Access Point Mode)</p>
+            <p class="ap-mode-connected" style="display: none;"><b>Yotta Wifi</b> - <strong>Connected</strong><br>(Access Point Mode)</p>
           </div>
-        </div>
+
+          <div class="round-cta sta-mode-block">
+            <div>
+              <span class="ico ico-wifi"></span>
+            </div>
+            <p class="sta-mode" style="display: none;"><b>Your Wifi</b><br>(Station Mode)</p>
+            <p class="sta-mode-connected" style="display: none;"><b>Your Wifi</b> - <strong>Connected</strong><br>(Station Mode)</p>
+          </div>
+      
+        </td></tr>
+        </table>  
+        </div>    
         <!-- END: Body Main -->
 
 
@@ -128,6 +132,7 @@
     <script src="assets/js/modernizr.min.js"></script>
     <script src="assets/js/barba.umd.js"></script>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/main.min.js"></script>
   </body>
 </html>
