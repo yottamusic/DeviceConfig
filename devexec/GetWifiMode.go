@@ -17,14 +17,13 @@ type BashResponseWifiMode struct {
 // GetWifiMode Get Wifi Mode by Running a Script from Bash
 func GetWifiMode() (string, error) {
 
-	command := exec.Command("/bin/bash", "Check_Wifi_Mode.sh", "-l")
+	command := exec.Command("/bin/bash", "Check_Wifi_Mode.sh")
 	command.Dir = "/root/"
 	commandOutput, err := command.CombinedOutput()
 	if err != nil {
 		fmt.Printf("%s", err)
 		return "", err
 	}
-	//output := string(commandOutput[:])
 	log.Println(string(commandOutput[:]))
 	var bashResponseWifiMode BashResponseWifiMode
 	err = json.Unmarshal(commandOutput, &bashResponseWifiMode)
@@ -35,5 +34,5 @@ func GetWifiMode() (string, error) {
 	if bashResponseWifiMode.Result != "success" {
 		return bashResponseWifiMode.Result, nil
 	}
-	return bashResponseWifiMode.Message, nil
+	return string(commandOutput[:]), nil
 }
