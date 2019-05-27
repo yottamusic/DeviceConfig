@@ -1,5 +1,14 @@
+.content-block {
+  text-align: center;
+  margin: 20px auto;
+
+  p {
+    font-weight: 500;
+  }
+}
+
 .round-cta {
-  margin: 60px auto;
+  margin: 0 auto;
 
   >div {
     background-color: #7F8C8D;
@@ -23,34 +32,9 @@
   background-color: #8CC63F;
 }
 
-.content-block {
-  text-align: center;
-  margin: 20px auto;
-
-  p {
-    font-weight: 500;
-  }
-}
-
-a.button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #304446;
-  color: #fff;
-  border-radius: 3px;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.2), -1px 1px 2px rgba(0,0,0,0.2);
-}
-
-a.button.btn-lg {
-  display: block;
-  width: 150px;
-  text-align: center;
-  margin: 20px auto;
-}
-
 
 .round-ico{
-  margin: 30px auto;
+  margin: 0 auto;
 
   >div {
     width: 100px;
@@ -61,5 +45,9 @@ a.button.btn-lg {
     font-size: 100px;
     border-radius: 50px;
     margin: 0 auto;
+  }
+  >p {
+    text-align: center;
+    margin: 10px;
   }
 }

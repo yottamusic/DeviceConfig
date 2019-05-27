@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'yotta';
-  src:  url('fonts/yotta.eot?lyilzg');
-  src:  url('fonts/yotta.eot?lyilzg#iefix') format('embedded-opentype'),
-    url('fonts/yotta.ttf?lyilzg') format('truetype'),
-    url('fonts/yotta.woff?lyilzg') format('woff'),
-    url('fonts/yotta.svg?lyilzg#yotta') format('svg');
+  src:  url('fonts/yotta.eot?ounyib');
+  src:  url('fonts/yotta.eot?ounyib#iefix') format('embedded-opentype'),
+    url('fonts/yotta.ttf?ounyib') format('truetype'),
+    url('fonts/yotta.woff?ounyib') format('woff'),
+    url('fonts/yotta.svg?ounyib#yotta') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ico-speaker-test:before {
+  content: "\e909";
+}
+.ico-ok:before {
+  content: "\e908";
+}
+.ico-speaker-flat:before {
+  content: "\e907";
+}
+.ico-stereo:before {
+  content: "\e906";
+}
+.ico-mono:before {
+  content: "\e905";
+}
 .ico-auto-detect:before {
   content: "\e904";
 }
