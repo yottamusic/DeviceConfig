@@ -7,14 +7,14 @@ import (
 	"os/exec"
 )
 
-// bashResponseSSID Struct for parsing the Request as todo, result, message getting Speakers Count/List
+// BashResponseSSID Struct for parsing the Request as todo, result, message getting SSID List
 type BashResponseSSID struct {
 	ToDo    string `json:"todo"`
 	Result  string `json:"result"`
 	Message string `json:"message"`
 }
 
-// GetSpeakersList Get Speakers List by Running a Script from Bash
+// GetSSIDList Get SSID List by Running a Script from Bash
 func GetSSIDList() (string, error) {
 
 	command := exec.Command("/bin/bash", "Scan_Available_SSID.sh")
