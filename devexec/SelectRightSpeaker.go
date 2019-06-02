@@ -10,7 +10,7 @@ import (
 func SelectRightSpeaker(speakerID string, mode string) (string, error) {
 
 	commandSound := exec.Command("/bin/bash", "Play_Sound.sh", speakerID)
-	commandSound.Dir = "/root/"
+	commandSound.Dir = "/root/DeviceScripts/"
 	commandSoundOutput, err := commandSound.CombinedOutput()
 	if err != nil {
 		fmt.Printf("%s", err)
@@ -20,7 +20,7 @@ func SelectRightSpeaker(speakerID string, mode string) (string, error) {
 	log.Println(speakerSoundOutput)
 
 	commandLED := exec.Command("/bin/bash", "Set_Right_Speaker_LED.sh", speakerID)
-	commandLED.Dir = "/root/"
+	commandLED.Dir = "/root/DeviceScripts/"
 	commandLEDOutput, err := commandLED.CombinedOutput()
 	if err != nil {
 		fmt.Printf("%s", err)

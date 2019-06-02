@@ -18,7 +18,7 @@ type BashResponseSpeaker struct {
 func GetSpeakersList() (string, error) {
 
 	command := exec.Command("/bin/bash", "Check_Availible_Speakers.sh", "-c")
-	command.Dir = "/root/"
+	command.Dir = "/root/DeviceScripts/"
 	commandOutput, err := command.CombinedOutput()
 	if err != nil {
 		fmt.Printf("%s", err)
@@ -41,7 +41,7 @@ func GetSpeakersList() (string, error) {
 	} else {
 		// If Speaker Count Not Zero, Get the list
 		command := exec.Command("/bin/bash", "Check_Availible_Speakers.sh", "-l")
-		command.Dir = "/root/"
+		command.Dir = "/root/DeviceScripts/"
 		commandOutput, err := command.CombinedOutput()
 		if err != nil {
 			fmt.Printf("%s", err)

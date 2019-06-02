@@ -10,7 +10,7 @@ import (
 func ConfigMonoMode(speakerID string, mode string) (string, error) {
 
 	command := exec.Command("/bin/bash", "Set_Speaker.sh", speakerID, mode)
-	command.Dir = "/root/"
+	command.Dir = "/root/DeviceScripts/"
 	commandOutput, err := command.CombinedOutput()
 	if err != nil {
 		fmt.Printf("%s", err)
