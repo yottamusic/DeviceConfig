@@ -18,7 +18,7 @@ type BashResponseWifiMode struct {
 func GetWifiMode() (string, error) {
 
 	command := exec.Command("/bin/bash", "Check_Wifi_Mode.sh")
-	command.Dir = "/root/"
+	command.Dir = "/root/DeviceScripts/"
 	commandOutput, err := command.CombinedOutput()
 	if err != nil {
 		fmt.Printf("%s", err)

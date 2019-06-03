@@ -12,6 +12,14 @@ func wifiModeHandler(w http.ResponseWriter, r *http.Request) {
 	devapi.WifiModeHandler(w, r)
 }
 
+func wifiListHandler(w http.ResponseWriter, r *http.Request) {
+	devapi.WifiSSIDHandler(w, r)
+}
+
+func wifiConnectionHandler(w http.ResponseWriter, r *http.Request) {
+	devapi.WifiConnectionHandler(w, r)
+}
+
 func speakerListHandler(w http.ResponseWriter, r *http.Request) {
 	devapi.SpeakerListHandler(w, r)
 }
@@ -27,7 +35,8 @@ func speakerConfigHandler(w http.ResponseWriter, r *http.Request) {
 func setupRoutes() {
 	// Handle Configuration Requests for Wi-FI and Speakers
 	http.HandleFunc("/wifi/api/v1/mode", wifiModeHandler)
-	//http.HandleFunc("/wifi/api/v1/list", wifiListHandler)
+	http.HandleFunc("/wifi/api/v1/list", wifiListHandler)
+	http.HandleFunc("/wifi/api/v1/connect", wifiConnectionHandler)
 	http.HandleFunc("/speakers/api/v1/list", speakerListHandler)
 	http.HandleFunc("/speakers/api/v1/select", speakerSelectHandler)
 	http.HandleFunc("/speakers/api/v1/config", speakerConfigHandler)

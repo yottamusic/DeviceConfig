@@ -18,7 +18,7 @@ func ConfigStereoMode(speakerID string, mode string) (string, error) {
 	})
 
 	commandSpkr1 := exec.Command("/bin/bash", "Set_Speaker.sh", speakerList[0], mode)
-	commandSpkr1.Dir = "/root/"
+	commandSpkr1.Dir = "/root/DeviceScripts/"
 	commandSpkr1Output, err := commandSpkr1.CombinedOutput()
 	if err != nil {
 		fmt.Printf("%s", err)
@@ -28,7 +28,7 @@ func ConfigStereoMode(speakerID string, mode string) (string, error) {
 	log.Println(speaker1Output)
 
 	commandSpkr2 := exec.Command("/bin/bash", "Set_Speaker.sh", speakerList[1], mode)
-	commandSpkr2.Dir = "/root/"
+	commandSpkr2.Dir = "/root/DeviceScripts/"
 	commandSpkr2Output, err := commandSpkr2.CombinedOutput()
 	if err != nil {
 		fmt.Printf("%s", err)
