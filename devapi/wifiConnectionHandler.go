@@ -13,8 +13,8 @@ import (
 
 // Connect Struct for parsing the request as SpeakerID
 type Connect struct {
-	SSID     string `json:"speakerID"`
-	Password string `json:"mode"`
+	SSID     string `json:"ssid"`
+	Password string `json:"password"`
 }
 
 // WifiConnectionHandler Handler for Configuring the Speaker into Mono/Stereo mode
@@ -48,7 +48,7 @@ func WifiConnectionHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("{" + " \"result\": \"error\", \"message\": \"Cannot Execute on a Windows Machine\" " + "}"))
 	} else {
 		// Set Speaker(s) is required Modes
-		execOutput, err := devexec.ConfigStereoMode(connect.SSID, connect.Password)
+		execOutput, err := devexec.ConnectWiFi(connect.SSID, connect.Password)
 		if err != nil {
 			// Got Failure in Executing Command
 			log.Printf("Got Failure in Executing Command: %v", err)
