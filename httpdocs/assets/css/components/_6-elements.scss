@@ -51,3 +51,30 @@
     margin: 10px;
   }
 }
+
+
+.wifi-list-base {
+  max-width: 90%;
+  margin: 0 auto;
+  height: 220px;
+  box-shadow: 0 0 0 1px #ddd;
+  text-align: left;
+  overflow-y: scroll;
+
+  .wifi-ssid{
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+
+    .ico{
+      margin-right: 10px;
+    }
+
+    >span{
+      font-weight: 500;
+    }
+  }
+
+  .no-wifi{
+    text-align: center;
+  }
+}
