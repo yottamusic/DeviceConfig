@@ -30,10 +30,10 @@ func GetSSIDList() (string, error) {
 		log.Printf("Error Parsing Message into JSON: %v", err)
 		return "", err
 	}
-	//output := string(commandOutput[:])
+	output := string(commandOutput[:])
 	log.Println(string(commandOutput[:]))
 	if bashResponseSSID.Result != "success" {
 		return bashResponseSSID.Result, nil
 	}
-	return bashResponseSSID.Message, nil
+	return output, nil
 }
