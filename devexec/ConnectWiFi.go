@@ -18,5 +18,5 @@ func ConnectWiFi(ssid string, password string) (string, error) {
 	}
 	commandOutput := string(commandConnectOutput[:])
 	log.Println(commandOutput)
-	return "{\"result\" : \"" + commandOutput + "\"}", nil
+	return commandOutput, nil
 }
