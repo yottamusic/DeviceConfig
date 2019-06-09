@@ -25,6 +25,7 @@
   }
 }
 
+
 .drawer{
   position: fixed;
   width: 60px;
@@ -37,31 +38,59 @@
 }
 
 
-.close-nav {
+.footer-action{
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  margin-left: -30px;
   width: 60px;
   height: 60px;
+  bottom: 20px;
+  left: 50%;
   color: #8c9798;
+  cursor: pointer;
+  border-radius: 30px;
   -webkit-box-shadow: 0 0 0 1px #495050;
   box-shadow: 0 0 0 1px #495050;
-  border-radius: 30px;
-  cursor: pointer;
   transform: translateY(100px);
-  transition: transform 0.3s ease-in;
+
+  span {
+    display: inline-block;
+    font-size: 30px;
+    padding: 15px;
+  }
 }
 
-.close-nav.visible{
+
+.back-nav{
+  width: 130px;
+  margin-left: -100px;
+  transition: transform 0.3s ease-in;
+
+  >span {
+    float: left;
+  }
+
+  >span:last-child {
+    font-size: 16px;
+    line-height: 30px;
+    padding-left: 0;
+  }
+}
+
+
+.back-nav.visible{
   transform: translateY(0);
   transition: transform 0.3s 0.3s ease-out;
 }
 
-.close-nav span {
-  display: inline-block;
-  font-size: 30px;
-  padding: 15px;
+
+.close-nav {
+  margin-left: 40px;
+  transition: transform 0.3s 0.1s ease-in;
+}
+
+
+.close-nav.visible{
+  transform: translateY(0);
+  transition: transform 0.3s 0.36s ease-out;
 }
 
 
