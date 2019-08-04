@@ -26,8 +26,7 @@
 		<header id="header" class="alt">
 			<span class="logo"><img src="images/logo.svg" alt="" /></span>
 			<h1>AudioSteer</h1>
-			<p>Very Simple & Light Weight App to Control your Music Player <br />
-				built by <a href="https://twitter.com/@REVOtic" target="_blank">@REVOtic</a> for PowerPan.</p>
+			<p>Very Simple & Light Weight App to Control your Music Player</p>
 		</header>
 
 		<!-- Nav -->
@@ -58,32 +57,39 @@
 					</div> -->
 
 					<!-- <div id="Tab1" class="tabcontent"> -->
-						<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+					<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
 						<div class="container padding-bottom-50" style="text-align: center;">
-							<div class="c-switch">
-								<div class="c-switch__highlight"></div>
-								<button data-value="first">Positive</button>
-								<button data-value="second">Negative</button>
-							</div>
+							<br />
 							<div class="row">
 								<div class="col-sm-2"></div>
 								<div class="col-sm-4">
-									<input id="slider-CH1" type="range" min="-10" max="10" step="1" value="0" data-orientation="vertical">
+									<input id="slider-CH1" type="range" min="0" max="100" step="1" value="0" data-orientation="vertical">
 									<br />
-									<input id="input-CH1" class="channel" type="number" min="-10" max="10" value="0"></input>
-									<span>dB</span>
+									<input id="input-CH1" class="channel" type="number" min="0" max="100" value="0"></input>
+									<span>ms</span>
 								</div>
 								<div class="col-sm-4">
-									<input id="slider-CH2" type="range" min="-15" max="15" step="1" value="0" data-orientation="vertical">
-									<br />
-									<input id="input-CH2" class="channel" type="number" min="-15" max="15" value="0"></input>
-									<span>dB</span>
+									<div class="c-switch">
+										<div class="c-switch__highlight"></div>
+										<button data-value="first">Positive</button>
+										<button data-value="second">Negative</button>
+									</div>
 								</div>
-								<div class="col-sm-2"></div>
+								<div class="col-sm-2">
+									<label for="speakerList">Speaker</label>
+									<select class="form-control" id="speakerList">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+										<option>6</option>
+									</select>
+								</div>
 							</div>
 						</div>
-					</div>
+				</div>
 
 					<!-- <div id="Tab2" class="tabcontent">
 						<div id="chartContainer" style="height: 370px; width: 100%;"></div>
@@ -224,10 +230,10 @@
 							</div>
 						</div>
 					</div> -->
-					<div class="config-button">
-						<a class="button channel-btn">Save Graph Config</a>
-					</div>
+				<div class="config-button">
+					<a class="button channel-btn">Save Graph Config</a>
 				</div>
+			</div>
 			</section>
 
 		</div>
@@ -239,7 +245,7 @@
 				<p>AudioSteer WebApp is built using HTML5, CSS3 and Bootstrap UI. Rendered using the Go Programming Language, it
 					is comparitively very fast and a light weight application suiatble for the music player device.</p>
 				<ul class="actions">
-					<li><a href="https://github.com/REVOtic/AudioSteer" target="_blank" class="button">Learn More</a></li>
+					<li><a href="https://github.com/yottamusic/AudioSteer" target="_blank" class="button">Learn More</a></li>
 				</ul>
 			</section>
 			<section>

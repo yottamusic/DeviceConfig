@@ -126,22 +126,23 @@
 	};
 	let dataPoints = [];
 	let eq_settings = "";
+	
 	// $.getJSON("./assets/datadir/eq-settings.json", function (eQdata) {
-	$.ajax({
-		url: "./assets/datadir/eq-settings.json",
-		async: false,
-		success: function (eQdata) {
-			eq_settings = eQdata;
-			$.each(eQdata, function (key, value) {
-				dataPoints.push({
-					x: eq_settings[key].frequency,
-					y: eq_settings[key].gain
-				});
-			});
-		}
-	});
-	dataSeries.dataPoints = dataPoints;
-	data.push(dataSeries);
+	// $.ajax({
+	// 	url: "./assets/datadir/eq-settings.json",
+	// 	async: false,
+	// 	success: function (eQdata) {
+	// 		eq_settings = eQdata;
+	// 		$.each(eQdata, function (key, value) {
+	// 			dataPoints.push({
+	// 				x: eq_settings[key].frequency,
+	// 				y: eq_settings[key].gain
+	// 			});
+	// 		});
+	// 	}
+	// });
+	// dataSeries.dataPoints = dataPoints;
+	// data.push(dataSeries);
 
 	var options = {
 		animationEnabled: true,
@@ -151,16 +152,7 @@
 		title: {
 			text: "Equalizer Setup"
 		},
-		draggable: true,
-		onDragStart: function(event) {
-
-		},
-		onDrag: function(event) {
-	
-		},
-		onDragEnd: function(event) {
-	
-		},
+		theme: "light2",
 		annotation: {
 			annotations: [
 				{
@@ -176,33 +168,243 @@
 			]
 		},
 		axisX: {
-			logarithmic: true,
-			title: "Frequency (Hz)",
-			minimum: 20,
+			//logarithmic: true,
+			title: "Band",
+			minimum: 0,
+			//valueFormatString:" ",
 			stripLines: [{
-					value: 100,
+					value: 10,
 				},
 				{
-					value: 1000,
+					value: 20,
 				},
 				{
-					value: 10000,
+					value: 30,
 				},
 				{
-					value: 20000,
+					value: 40,
 				}
 			]
 		},
 		axisY: {
-			includeZero: true,
+			includeZero: false,
+			minimum: -30,
+			maximum: 30,
 			title: "Gain (dB)"
 		},
-		data: data
+		//data: data
+		data: [{
+			type: "line",
+      		markerSize: 2,
+      		lineThickness: 3,
+			dataPoints: [{
+				x: 0,
+				y: 0
+			},
+			{
+				x: 1,
+				y: 0
+			},
+			{
+				x: 2,
+				y: 0
+			},
+			{
+				x: 3,
+				y: 0
+			},
+			{
+				x: 4,
+				y: 0
+			},
+			{
+				x: 5,
+				y: 0
+			},
+			{
+				x: 6,
+				y: 0
+			},
+			{
+				x: 7,
+				y: 0
+			},
+			{
+				x: 8,
+				y: 0
+			},
+			{
+				x: 9,
+				y: 0
+			},
+			{
+				x: 10,
+				y: 0
+			},
+			{
+				x: 11,
+				y: 0
+			},
+			{
+				x: 12,
+				y: 0
+			},
+			{
+				x: 13,
+				y: 0
+			},
+			{
+				x: 14,
+				y: 0
+			},
+			{
+				x: 15,
+				y: 0
+			},
+			{
+				x: 16,
+				y: 0
+			},
+			{
+				x: 17,
+				y: 0
+			},
+			{
+				x: 18,
+				y: 0
+			},
+			{
+				x: 19,
+				y: 0
+			},
+			{
+				x: 20,
+				y: 0
+			},
+			{
+				x: 31,
+				y: 0
+			},
+			{
+				x: 32,
+				y: 0
+			},
+			{
+				x: 33,
+				y: 0
+			},
+			{
+				x: 34,
+				y: 0
+			},
+			{
+				x: 35,
+				y: 0
+			},
+			{
+				x: 36,
+				y: 0
+			},
+			{
+				x: 37,
+				y: 0
+			},
+			{
+				x: 38,
+				y: 0
+			},
+			{
+				x: 39,
+				y: 0
+			},
+			{
+				x: 40,
+				y: 0
+			}]
+		}]
 	};
 
+	//$("#chartContainer").CanvasJSChart(options);
+	var chart = new CanvasJS.Chart("chartContainer", options);
+		chart.render();
+
+		var xSnapDistance = 2 / 2;
+		var ySnapDistance = 2;
+
+		var xValue, yValue;
+
+		var mouseDown = false;
+		var selected = null;
+		var changeCursor = false;
+
+		var timerId = null;
+
+		$("#chartContainer > .canvasjs-chart-container").on("mousedown", function(e) {
+			mouseDown = true;
+			getPosition(e);
+			searchDataPoint();
+		});
+
+		$("#chartContainer > .canvasjs-chart-container").on("mouseup", function(e) {
+			if (selected != null) {
+				chart.data[0].dataPoints[selected].y = yValue;
+				chart.render();
+				mouseDown = false;
+			}
+		});
+
+		$("#chartContainer > .canvasjs-chart-container").on("mousemove", function(e) {
+			getPosition(e);
+			if (mouseDown) {
+				clearTimeout(timerId);
+				timerId = setTimeout(function() {
+					if (selected != null) {
+					chart.data[0].dataPoints[selected].y = yValue;
+					chart.render();
+					}
+				}, 0);
+			} else {
+				searchDataPoint();
+				if (changeCursor) {
+					chart.data[0].set("cursor", "n-resize");
+				} else {
+					chart.data[0].set("cursor", "default");
+				}
+			}
+		});
+
+
+		function getPosition(e) {
+			var parentOffset = $("#chartContainer > .canvasjs-chart-container").offset();
+			var relX = e.pageX - parentOffset.left;
+			var relY = e.pageY - parentOffset.top;
+			xValue = Math.round(chart.axisX[0].convertPixelToValue(relX));
+			yValue = Math.round(chart.axisY[0].convertPixelToValue(relY));
+		}
+
+		function searchDataPoint() {
+			var dps = chart.data[0].dataPoints;
+			for (var i = 0; i < dps.length; i++) {
+			  	if ((xValue >= dps[i].x - xSnapDistance && xValue <= dps[i].x + xSnapDistance) && (yValue >= dps[i].y - ySnapDistance && yValue <= dps[i].y + ySnapDistance)) {
+					if (mouseDown) {
+						selected = i;
+						break;
+					} else {
+						changeCursor = true;
+						break;
+					}
+			  	} else {
+					selected = null;
+					changeCursor = false;
+			  	}
+			}
+		}
+
 	try {
-		$("#chartContainer").CanvasJSChart(options);
-	} catch (err) {}
+		
+	} catch (err) {
+
+	}
 
 	$('.btn-toggle').click(function () {
 		$(this).find('.btn').toggleClass('active');
