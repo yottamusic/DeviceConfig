@@ -1,3 +1,6 @@
+let chart;
+let polarity;
+
 (function ($) {
 
 	var $window = $(window),
@@ -282,6 +285,46 @@
 				y: 0
 			},
 			{
+				x: 21,
+				y: 0
+			},
+			{
+				x: 22,
+				y: 0
+			},
+			{
+				x: 23,
+				y: 0
+			},
+			{
+				x: 24,
+				y: 0
+			},
+			{
+				x: 25,
+				y: 0
+			},
+			{
+				x: 26,
+				y: 0
+			},
+			{
+				x: 27,
+				y: 0
+			},
+			{
+				x: 28,
+				y: 0
+			},
+			{
+				x: 29,
+				y: 0
+			},
+			{
+				x: 30,
+				y: 0
+			},
+			{
 				x: 31,
 				y: 0
 			},
@@ -325,7 +368,7 @@
 	};
 
 	//$("#chartContainer").CanvasJSChart(options);
-	var chart = new CanvasJS.Chart("chartContainer", options);
+	chart = new CanvasJS.Chart("chartContainer", options);
 		chart.render();
 
 		var xSnapDistance = 2 / 2;
@@ -485,13 +528,59 @@ class Switch {
 	}
 }
 const mySwitch = new Switch(".c-switch");
-mySwitch.element.addEventListener("change", e => console.log(e.detail));
+mySwitch.element.addEventListener("change", e => {
+	console.log(e.detail);
+	if (e.detail === "first") {
+		console.log("0");
+		polarity = "0";
+	}
+	else {
+		console.log("1");
+		polarity = "1";
+	}
+});
 
 
 $(function() {
-  $('input[type=file]').change(function(){
-    var t = $(this).val();
-    var labelText = 'File : ' + t.substr(12, t.length);
-    $(this).prev('label').text(labelText);
-  })
+  	$('input[type=file]').change(function(){
+		var t = $(this).val();
+		var labelText = 'File : ' + t.substr(12, t.length);
+		$(this).prev('label').text(labelText);
+  	})
 });
+
+function saveEQSettings() {
+	let settings = "";
+
+	// Save as csv
+	for(let i=0; i <=40; i++) {
+		//console.log(chart.axisX[0].dataSeries[0].dataPoints[i].y);
+		settings += (chart.axisX[0].dataSeries[0].dataPoints[i].y.toString() + ", ")
+	}
+
+	settings += $("input[type=range]").val().toString() + ", ";
+
+	settings += polarity + ", ";
+
+	settings += $("#speakerList").find(":selected").text().toString();
+
+	let jsonObj = {
+		"settings": settings
+	};
+
+	console.log(JSON.stringify(jsonObj));
+	
+	$.ajax({
+		type: 'POST',
+		url: '/saveConfig',
+		data: JSON.stringify(jsonObj),
+		contentType: "application/json",
+		dataType: 'json',
+		success: function(retVal) {
+			alert('Success: ' + JSON.stringify(retVal));
+		},
+		error: function(err) {
+			console.log('Error: ' + JSON.stringify(err));
+		}
+	});
+}
