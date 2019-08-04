@@ -32,6 +32,10 @@ func speakerConfigHandler(w http.ResponseWriter, r *http.Request) {
 	devapi.SpeakerConfigHandler(w, r)
 }
 
+func saveConfigHandler(w http.ResponseWriter, r *http.Request) {
+	devapi.SaveConfigHandler(w, r)
+}
+
 func setupRoutes() {
 	// Handle Configuration Requests for Wi-FI and Speakers
 	http.HandleFunc("/wifi/api/v1/mode", wifiModeHandler)
@@ -40,6 +44,7 @@ func setupRoutes() {
 	http.HandleFunc("/speakers/api/v1/list", speakerListHandler)
 	http.HandleFunc("/speakers/api/v1/select", speakerSelectHandler)
 	http.HandleFunc("/speakers/api/v1/config", speakerConfigHandler)
+	http.HandleFunc("/saveConfig", saveConfigHandler)
 
 	// Handle Any Request
 	port := flag.String("p", "80", "Port to Serve UI on")
